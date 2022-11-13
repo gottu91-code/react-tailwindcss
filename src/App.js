@@ -1,23 +1,19 @@
-import logo from './logo.svg';
-import './App.css';
+import { useState } from "react";
+import { Card } from "./components/Card";
 
 function App() {
+  const [isAdmin, setIsAdmin] = useState(false);
+
+  const changeAdmin = () => {
+    setIsAdmin((prevIsAdmin) => {
+      return !prevIsAdmin;
+    });
+  }
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <Card isAdmin={isAdmin} />
+      <button onClick={changeAdmin}>切り替え</button>
     </div>
   );
 }
